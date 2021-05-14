@@ -26,12 +26,12 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public."Candidate" (
     id integer NOT NULL,
-    "FirstName" character varying(50),
-    "LastName" character varying(50),
-    tckn character varying(11),
-    "BirthYear" date,
-    "EMail" character varying(50),
-    "Password" character varying(50),
+    "FirstName" character varying(50) NOT NULL,
+    "LastName" character varying(50) NOT NULL,
+    tckn character varying(11) NOT NULL,
+    "BirthYear" date NOT NULL,
+    "EMail" character varying(50) NOT NULL,
+    "Password" character varying(50) NOT NULL,
     "CreatedDate" date
 );
 
@@ -66,10 +66,11 @@ ALTER SEQUENCE public."Candidate_id_seq" OWNED BY public."Candidate".id;
 
 CREATE TABLE public."Employer" (
     id integer NOT NULL,
-    "CompanyName" character varying(50),
-    "CompanyWebsite" character varying(50),
-    "CompanyEmail" character varying(50),
-    "Phone" integer
+    "CompanyName" character varying(50) NOT NULL,
+    "CompanyWebsite" character varying(50) NOT NULL,
+    "CompanyEmail" character varying(50) NOT NULL,
+    "Phone" integer NOT NULL,
+    "Password" character varying(50) NOT NULL
 );
 
 
@@ -103,7 +104,7 @@ ALTER SEQUENCE public."Employer_id_seq" OWNED BY public."Employer".id;
 
 CREATE TABLE public."Jobs" (
     id integer NOT NULL,
-    "JobName" character varying(50)
+    "JobName" character varying(50) NOT NULL
 );
 
 
@@ -137,12 +138,12 @@ ALTER SEQUENCE public."Jobs_id_seq" OWNED BY public."Jobs".id;
 
 CREATE TABLE public.users (
     id integer NOT NULL,
-    "FirstName" character varying(50),
-    "LastName" character varying(50),
-    "EMail" character varying(50),
-    "Created" date,
-    "Password" character varying(10),
-    "Status" integer
+    "FirstName" character varying(50) NOT NULL,
+    "LastName" character varying(50) NOT NULL,
+    "EMail" character varying(50) NOT NULL,
+    "Created" date NOT NULL,
+    "Password" character varying(10) NOT NULL,
+    "Status" integer NOT NULL
 );
 
 
@@ -210,7 +211,7 @@ COPY public."Candidate" (id, "FirstName", "LastName", tckn, "BirthYear", "EMail"
 -- Data for Name: Employer; Type: TABLE DATA; Schema: public; Owner: yasem
 --
 
-COPY public."Employer" (id, "CompanyName", "CompanyWebsite", "CompanyEmail", "Phone") FROM stdin;
+COPY public."Employer" (id, "CompanyName", "CompanyWebsite", "CompanyEmail", "Phone", "Password") FROM stdin;
 \.
 
 
